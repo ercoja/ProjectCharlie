@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProjectCharlie Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="weather-app">
+      <div class="card">
+        <h1>Weather Lookup</h1>
+
+        <form method="post" class="search-form">
+          <label for="city" class="sr-only">City</label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            value="{{ city }}"
+            placeholder="Enter a city"
+            autocomplete="off"
+          />
+          <button type="submit">Check Weather</button>
+        </form>
+
+        {% if error %}
+          <div class="message error">{{ error }}</div>
+        {% endif %}
+
+        {% if weather %}
+          <section class="weather-result" aria-live="polite">
+            <div class="weather-header">
+              <div>
+                <p class="label">Current weather</p>
+                <h2>{{ weather.city }}</h2>
+              </div>
+              <div class="icon" aria-label="{{ weather.description }}">{{ weather.icon }}</div>
+            </div>
+
+            <div class="temp-row">
+              <span class="temperature">{{ weather.temperature }}°C</span>
+              <span class="description">{{ weather.description }}</span>
+            </div>
+
+            <div class="stats">
+              <div>
+                <span class="stat-label">Feels like</span>
+                <strong>{{ weather.feels_like }}°C</strong>
+              </div>
+              <div>
+                <span class="stat-label">Humidity</span>
+                <strong>{{ weather.humidity }}%</strong>
+              </div>
+              <div>
+                <span class="stat-label">Wind</span>
+                <strong>{{ weather.wind }} km/h</strong>
+              </div>
+            </div>
+          </section>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>
