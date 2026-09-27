@@ -107,11 +107,32 @@ def home():
                         "https://api.open-meteo.com/v1/forecast?"
                         f"latitude={latitude}&longitude={longitude}"
                         "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m"
-                        "&timezone=auto"
+                        "&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=5"
                     )
 
                     current = forecast.get("current", {})
+                    daily = forecast.get("daily", {})
                     weather_code = current.get("weather_code", 0)
+                    daily_codes = daily.get("weather_code", [])
+                    daily_highs = daily.get("temperature_2m_max", [])
+                    daily_lows = daily.get("temperature_2m_min", [])
+                    dates = daily.get("time", [])
+
+                    forecast_days = []
+                    for index, date_value in enumerate(dates[:5]):
+                        code = daily_codes[index] if index < len(daily_codes) else 0
+                        high = daily_highs[index] if index < len(daily_highs) else 0
+                        low = daily_lows[index] if index < len(daily_lows) else 0
+                        forecast_days.append(
+                            {
+                                "date": date_value,
+                                "icon": WEATHER_ICONS.get(code, "🌤️"),
+                                "description": WEATHER_LABELS.get(code, "Clear sky"),
+                                "high": high,
+                                "low": low,
+                            }
+                        )
+
                     weather = {
                         "city": f"{city_name}, {country}".strip(", "),
                         "temperature": current.get("temperature_2m"),
@@ -120,6 +141,7 @@ def home():
                         "wind": current.get("wind_speed_10m"),
                         "icon": WEATHER_ICONS.get(weather_code, "🌤️"),
                         "description": WEATHER_LABELS.get(weather_code, "Clear sky"),
+                        "forecast": forecast_days,
                     }
             except Exception:
                 error = "Unable to load weather right now. Please try again."

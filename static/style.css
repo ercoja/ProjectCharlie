@@ -140,6 +140,59 @@ h2 {
   margin-bottom: 0.3rem;
 }
 
+.forecast-section {
+  margin-top: 1.25rem;
+}
+
+.forecast-section h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: #bbf7d0;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.forecast-item {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #cbd5e1;
+  margin-bottom: 0.4rem;
+}
+
+.forecast-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.forecast-description {
+  font-size: 0.68rem;
+  min-height: 2.3em;
+  color: #dbeafe;
+}
+
+.forecast-temp {
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+.forecast-temp .low {
+  color: #bfdbfe;
+  margin-left: 0.3rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

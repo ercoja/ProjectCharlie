@@ -57,6 +57,23 @@
                 <strong>{{ weather.wind }} km/h</strong>
               </div>
             </div>
+
+            <div class="forecast-section">
+              <h3>5 Day Forecast</h3>
+              <div class="forecast-grid">
+                {% for day in weather.forecast %}
+                  <div class="forecast-item">
+                    <div class="forecast-date">{{ day.date }}</div>
+                    <div class="forecast-icon" aria-label="{{ day.description }}">{{ day.icon }}</div>
+                    <div class="forecast-description">{{ day.description }}</div>
+                    <div class="forecast-temp">
+                      <span>{{ day.high }}°</span>
+                      <span class="low">{{ day.low }}°</span>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
           </section>
         {% endif %}
       </div>
