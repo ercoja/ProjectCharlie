@@ -3,21 +3,22 @@
 }
 
 :root {
-  --bg: #efede9;
-  --bg-deep: #dfe0dc;
-  --panel: #f8f6f3;
-  --panel-strong: #f1efe9;
+  --bg: #eaf7ff;
+  --bg-deep: #d9f1f7;
+  --panel: #f3fbff;
+  --panel-strong: #e8f7f7;
   --card: #ffffff;
-  --text: #1a1a1a;
-  --muted: #5a5652;
-  --border: #d4cfc8;
-  --soft: #e7e1da;
-  --button: #1d1d1d;
-  --button-text: #f7f5f2;
-  --shadow: rgba(17, 17, 17, 0.08);
-  --error-bg: rgba(120, 47, 36, 0.08);
-  --error-text: #7a3a2d;
-  --earth: #8d7a68;
+  --text: #12324a;
+  --muted: #3f647d;
+  --border: #bfe0eb;
+  --soft: #dfeef8;
+  --button: #0f766e;
+  --button-text: #f0fdfd;
+  --shadow: rgba(15, 118, 110, 0.18);
+  --error-bg: rgba(127, 29, 29, 0.08);
+  --error-text: #7f1d1d;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
 }
 
 body {
@@ -36,7 +37,7 @@ body {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: 0 20px 40px var(--shadow);
@@ -78,13 +79,13 @@ h1 {
   padding: 0.9rem 1.2rem;
   font-weight: 700;
   cursor: pointer;
-  background: var(--button);
+  background: linear-gradient(135deg, var(--button), var(--accent));
   color: var(--button-text);
   transition: opacity 0.2s ease;
 }
 
 .search-form button:hover {
-  opacity: 0.92;
+  opacity: 0.96;
 }
 
 .message {
@@ -97,12 +98,12 @@ h1 {
 .message.error {
   background: var(--error-bg);
   color: var(--error-text);
-  border: 1px solid rgba(122, 58, 45, 0.18);
+  border: 1px solid rgba(127, 29, 29, 0.14);
 }
 
 .weather-result {
   margin-top: 1.5rem;
-  background: var(--panel-strong);
+  background: linear-gradient(180deg, var(--panel-strong), rgba(255,255,255,0.8));
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 1.2rem;
@@ -160,7 +161,7 @@ h2 {
 }
 
 .stats div {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.8rem 0.7rem;
@@ -190,7 +191,7 @@ h2 {
 }
 
 .forecast-item {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.7rem 0.5rem;
